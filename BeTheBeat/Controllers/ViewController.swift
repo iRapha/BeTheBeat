@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         }
     }
     
+    var songBPM: Float? = nil
+    
     var tempRecordingURL: NSURL? = nil {
         didSet {
             print(tempRecordingURL)
@@ -69,8 +71,8 @@ class ViewController: UIViewController {
             exporter.outputURL = newURL
             
             exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
-                let bpm = BPMDetector().getBPM(newURL)
-                print(bpm)
+                self.songBPM = BPMDetector().getBPM(newURL)
+                print(self.songBPM)
             })
         }
     }
@@ -86,12 +88,12 @@ class ViewController: UIViewController {
     func stopRecording() {
         recorder?.stop()
         getBPMForRecording()
-//uncomment when you feel confident it works        record10Sec()
+//        record10Sec() // uncomment when you feel confident it works!
     }
     
     func getBPMForRecording() {
-        // TODO: Kevin :)
-        let record = BPMDetector().getBPM(tempRecordingURL)
+        let currentRecordingBPM = BPMDetector().getBPM(tempRecordingURL)
+        adjustBeat(originalBeat: self.songBPM!, newBeat: currentRecordingBPM)
     }
     
     private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
