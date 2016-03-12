@@ -12,18 +12,12 @@ import AVFoundation
 
 /// Makes sure that the app has access to music library.
 class MusicLoader {
-    init() {
-        let musicOnlyFIlter = MPMediaPropertyPredicate(value: NSNumber(unsignedInteger: MPMediaType.Music.rawValue), forProperty: MPMediaItemPropertyMediaType)
-        let query = MPMediaQuery(filterPredicates: [musicOnlyFIlter])
-        let allSongs = (query.items ?? []).flatMap { (mediaItem) -> AVURLAsset? in
-            if let url = mediaItem.assetURL {
-                return AVURLAsset(URL: url)
-            }
-            return nil
-        }
+    init(song : MPMediaItem) {
+        // Start playing song.
+        let player = AVPlayer(URL: song.assetURL!)
+        player.play()
         
-        for song in allSongs {
-            print(song)
-        }
+        // Does the metadata include the BPMs?
+        print(song.beatsPerMinute)
     }
 }
