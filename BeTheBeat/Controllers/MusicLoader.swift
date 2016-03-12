@@ -15,7 +15,7 @@ class MusicLoader {
     init() {
         let musicOnlyFIlter = MPMediaPropertyPredicate(value: NSNumber(unsignedInteger: MPMediaType.Music.rawValue), forProperty: MPMediaItemPropertyMediaType)
         let query = MPMediaQuery(filterPredicates: [musicOnlyFIlter])
-        let allSongs = (query.items ?? []).map { (mediaItem) -> AVURLAsset? in
+        let allSongs = (query.items ?? []).flatMap { (mediaItem) -> AVURLAsset? in
             if let url = mediaItem.assetURL {
                 return AVURLAsset(URL: url)
             }
