@@ -56,9 +56,9 @@ class ViewController: UIViewController {
 
     func record10Sec() {
         recorder?.record()
-        var triggerTime = (Int64(NSEC_PER_SEC) * 10)
+        let triggerTime = (Int64(NSEC_PER_SEC) * 10)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
-            stopRecording()
+            self.stopRecording()
         })
     }
     
