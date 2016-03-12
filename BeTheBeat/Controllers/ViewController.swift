@@ -19,8 +19,10 @@ class ViewController: UIViewController {
             guard let newValue = newValue else { return }
             let player = AVPlayer(URL: newValue.URL)
             player.play()
-            player.rate = 2.0
             self.musicPlayer = player
+        }
+        didSet {
+            runBPMCalculations()
         }
     }
     
@@ -53,6 +55,25 @@ class ViewController: UIViewController {
         }
 
     }
+    
+    private func runBPMCalculations() {
+        guard let song = songAsset else { return }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+            //Copy file to Documents directory where we can access the data.
+            let fileName = "temp_file_copy"
+            let documentsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString // (pathComponent)
+            let newURL = NSURL(fileURLWithPath: documentsDir.stringByAppendingPathComponent(fileName))
+            
+            let exporter = AVAssetExportSession(asset: song, presetName: AVAssetExportPresetAppleM4A)!
+            exporter.outputFileType = "com.apple.m4a-audio"
+            exporter.outputURL = newURL
+            
+            exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
+                let bpm = BPMDetector().getBPM(newURL)
+                print(bpm)
+            })
+        }
+    }
 
     func record10Sec() {
         recorder?.record()
@@ -70,6 +91,7 @@ class ViewController: UIViewController {
     
     func getBPMForRecording() {
         // TODO: Kevin :)
+        let record = BPMDetector().getBPM(tempRecordingURL)
     }
     
     private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
