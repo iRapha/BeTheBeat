@@ -12,11 +12,15 @@ import AVFoundation
 
 /// Makes sure that the app has access to music library.
 class MusicLoader {
-    
     init() {
         let musicOnlyFIlter = MPMediaPropertyPredicate(value: NSNumber(unsignedInteger: MPMediaType.Music.rawValue), forProperty: MPMediaItemPropertyMediaType)
         let query = MPMediaQuery(filterPredicates: [musicOnlyFIlter])
-        let allSongs = (query.items ?? []).map({ AVURLAsset(URL: $0.assetURL!) })
+        let allSongs = (query.items ?? []).map { (mediaItem) -> AVURLAsset? in
+            if let url = mediaItem.assetURL {
+                return AVURLAsset(URL: url)
+            }
+            return nil
+        }
         
         for song in allSongs {
             print(song)
