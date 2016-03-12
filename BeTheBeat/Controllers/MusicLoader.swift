@@ -12,7 +12,7 @@ import AVFoundation
 
 /// Makes sure that the app has access to music library.
 class MusicLoader {
-    init(song : MPMediaItem) {
+    init() {
         // Start playing song.
         let player = AVPlayer(URL: song.assetURL!)
         player.play()

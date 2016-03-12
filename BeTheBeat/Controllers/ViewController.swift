@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let _ = MusicLoader()
     }
 
     private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
@@ -46,6 +45,7 @@ extension ViewController : MPMediaPickerControllerDelegate {
     private func pickSong() {
         let picker = MPMediaPickerController(mediaTypes: .Music)
         picker.delegate = self
+        picker.showsCloudItems = false
         presentViewController(picker, animated: true, completion: nil)
     }
     
