@@ -14,6 +14,7 @@
 		0A814C091C949D5000FEEB36 /* BeTheBeatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C081C949D5000FEEB36 /* BeTheBeatTests.swift */; };
 		0A814C151C949DD800FEEB36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C141C949DD800FEEB36 /* ViewController.swift */; };
 		0A814C171C949F3700FEEB36 /* MusicLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C161C949F3700FEEB36 /* MusicLoader.swift */; };
+		6415043A1C94C642003B9CC2 /* bass24-ios in Resources */ = {isa = PBXBuildFile; fileRef = 641504391C94C642003B9CC2 /* bass24-ios */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		0A814C0A1C949D5000FEEB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A814C141C949DD800FEEB36 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A814C161C949F3700FEEB36 /* MusicLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicLoader.swift; sourceTree = "<group>"; };
+		641504391C94C642003B9CC2 /* bass24-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "bass24-ios"; path = "../../../Downloads/bass24-ios"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		0A814BF21C949D5000FEEB36 /* BeTheBeat */ = {
 			isa = PBXGroup;
 			children = (
+				641504391C94C642003B9CC2 /* bass24-ios */,
 				0A814BF31C949D5000FEEB36 /* AppDelegate.swift */,
 				0A814C131C949DD800FEEB36 /* Controllers */,
 				0A814BF71C949D5000FEEB36 /* Main.storyboard */,
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A814BFE1C949D5000FEEB36 /* LaunchScreen.storyboard in Resources */,
+				6415043A1C94C642003B9CC2 /* bass24-ios in Resources */,
 				0A814BFB1C949D5000FEEB36 /* Assets.xcassets in Resources */,
 				0A814BF91C949D5000FEEB36 /* Main.storyboard in Resources */,
 			);
@@ -398,6 +402,7 @@
 				0A814C0F1C949D5000FEEB36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A814C101C949D5000FEEB36 /* Build configuration list for PBXNativeTarget "BeTheBeatTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +411,7 @@
 				0A814C121C949D5000FEEB36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
