@@ -12,6 +12,8 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var currentBPMLabel: UILabel!
+    
     var musicPlayer: AVPlayer? = nil
     
     var songAsset: AVURLAsset? = nil {
@@ -94,6 +96,7 @@ class ViewController: UIViewController {
     func getBPMForRecording() {
         let currentRecordingBPM = BPMDetector().getBPM(tempRecordingURL)
         adjustBeat(originalBeat: self.songBPM!, newBeat: currentRecordingBPM)
+        self.currentBPMLabel.text = String(currentRecordingBPM)
     }
     
     private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
