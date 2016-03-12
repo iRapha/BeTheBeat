@@ -12,7 +12,17 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    var songAsset: AVURLAsset? = nil
+    var musicPlayer: AVPlayer? = nil
+    
+    var songAsset: AVURLAsset? = nil {
+        willSet(newValue) {
+            guard let newValue = newValue else { return }
+            let player = AVPlayer(URL: newValue.URL)
+            player.play()
+            player.rate = 2.0
+            self.musicPlayer = player
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +30,8 @@ class ViewController: UIViewController {
         let _ = MusicLoader()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
+        musicPlayer?.rate = (originalBeat / newBeat)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,23 +40,22 @@ class ViewController: UIViewController {
             pickSong()
         }
     }
-    
 }
 
 extension ViewController : MPMediaPickerControllerDelegate {
     private func pickSong() {
-        
         let picker = MPMediaPickerController(mediaTypes: .Music)
         picker.delegate = self
         presentViewController(picker, animated: true, completion: nil)
     }
     
     func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-        if let song = mediaItemCollection.items.first,
+        if let song = mediaItemCollection.representativeItem,
             let url = song.assetURL {
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
                 let asset = AVURLAsset(URL: url)
                 self.songAsset = asset
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
