@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyH-tL-DNr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyH-tL-DNr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="104.5 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEH-3c-7L2">
@@ -30,6 +30,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-A7-PYi">
                                 <rect key="frame" x="263" y="518" width="75" height="30"/>
                                 <state key="normal" title="Play/Pause"/>
+                                <connections>
+                                    <action selector="playPause" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1j-FQ-WSR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPA-z2-BXt">
                                 <rect key="frame" x="256" y="458" width="89" height="21"/>
@@ -76,7 +79,9 @@
                     </view>
                     <connections>
                         <outlet property="artistLabel" destination="NRS-5m-BqT" id="FOg-ta-BNF"/>
+                        <outlet property="coverArt" destination="eyH-tL-DNr" id="Qqx-nD-RAU"/>
                         <outlet property="currentBPMLabel" destination="gEH-3c-7L2" id="R4T-us-ODU"/>
+                        <outlet property="songBPMLabel" destination="JA4-Fd-ULr" id="cPw-hw-FiN"/>
                         <outlet property="songNameLabel" destination="dPA-z2-BXt" id="RKI-sR-KEU"/>
                     </connections>
                 </viewController>
