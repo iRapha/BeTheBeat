@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentBPMLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
+    @IBOutlet weak var songBPMLabel: UILabel!
+    @IBOutlet weak var coverArt: UIImageView!
 
     var musicPlayer: AVPlayer? = nil
     var isPlaying: Bool = false;
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
             exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
                 self.songBPM = BPMDetector().getBPM(newURL)
                 print("Song BPM: \(self.songBPM!)")
+                self.songBPMLabel.text = String(self.songBPM)
                 
                 //Start recording once we have our songBPM
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -101,6 +104,7 @@ extension ViewController : MPMediaPickerControllerDelegate {
                 self.songAsset = asset
                 self.songNameLabel.text = song.title
                 self.artistLabel.text = song.artist
+                self.coverArt.image = song.artwork?.imageWithSize(self.coverArt.frame.size)
         }
     }
 }
