@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var songBPMLabel: UILabel!
+    @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var coverArt: UIImageView!
 
     var musicPlayer: AVPlayer? = nil
@@ -73,9 +74,11 @@ class ViewController: UIViewController {
         if (self.isPlaying) {
             self.musicPlayer?.pause()
             isPlaying = false
+            playPauseButton.setTitle("Play", forState: .Normal)
         } else {
             self.musicPlayer?.play()
             isPlaying = true
+            playPauseButton.setTitle("Pause", forState: .Normal)
         }
     }
     
