@@ -18,49 +18,27 @@ class ViewController: UIViewController {
     
     var songAsset: AVURLAsset? = nil {
         willSet(newValue) {
+            recorder.stopRecording()
+            
             guard let newValue = newValue else { return }
             let player = AVPlayer(URL: newValue.URL)
-            player.play()
+//            player.play()
             self.musicPlayer = player
         }
         didSet {
-            runBPMCalculations()
+            runSongBPMCalculations()
         }
     }
     
     var songBPM: Float? = nil
-    
-    var tempRecordingURL: NSURL? = nil {
-        didSet {
-            print(tempRecordingURL)
-        }
-    }
-    var recorder: AVAudioRecorder? = nil
+    let recorder = Recorder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        setUpRecorder()
+        recorder.delegate = self
     }
     
-    func setUpRecorder() {
-        tempRecordingURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("tempSong")
-        let recordSettings: [String:AnyObject] = [AVEncoderAudioQualityKey: NSNumber(long: AVAudioQuality.Min.rawValue),
-            AVEncoderBitRateKey: NSNumber(long: 16),
-            AVNumberOfChannelsKey: NSNumber(long: 2),
-            AVSampleRateKey: NSNumber(floatLiteral: 44100.0)]
-        
-        do {
-            try recorder = AVAudioRecorder(URL: tempRecordingURL!, settings: recordSettings)
-            recorder?.prepareToRecord()
-            record10Sec()
-        } catch {
-            
-        }
-
-    }
-    
-    private func runBPMCalculations() {
+    private func runSongBPMCalculations() {
         guard let song = songAsset else { return }
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
             //Copy file to Documents directory where we can access the data.
@@ -74,33 +52,14 @@ class ViewController: UIViewController {
             
             exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
                 self.songBPM = BPMDetector().getBPM(newURL)
-                print(self.songBPM)
+                print("Song BPM: \(self.songBPM!)")
+                
+                //Start recording once we have our songBPM
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.recorder.startRecording()
+                })
             })
         }
-    }
-
-    func record10Sec() {
-        recorder?.record()
-        let triggerTime = (Int64(NSEC_PER_SEC) * 10)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
-            self.stopRecording()
-        })
-    }
-    
-    func stopRecording() {
-        recorder?.stop()
-        getBPMForRecording()
-//        record10Sec() // uncomment when you feel confident it works!
-    }
-    
-    func getBPMForRecording() {
-        let currentRecordingBPM = BPMDetector().getBPM(tempRecordingURL)
-        adjustBeat(originalBeat: self.songBPM!, newBeat: currentRecordingBPM)
-        self.currentBPMLabel.text = String(currentRecordingBPM)
-    }
-    
-    private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
-        musicPlayer?.rate = (originalBeat / newBeat)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -127,6 +86,22 @@ extension ViewController : MPMediaPickerControllerDelegate {
                 let asset = AVURLAsset(URL: url)
                 self.songAsset = asset
         }
+    }
+}
+
+extension ViewController : RecorderDelegate {
+    func recorder(recorder: Recorder, didUpdateBPM bpm: Float) {
+        guard let songBPM = songBPM else { return }
+        adjustBeat(originalBeat: songBPM, newBeat: bpm)
+        self.currentBPMLabel.text = String(bpm)
+    }
+    
+    private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
+        print("New beat: \(newBeat)")
+        if newBeat == 0 {
+            return
+        }
+        musicPlayer?.rate = (newBeat / originalBeat)
     }
 }
 

@@ -16,6 +16,7 @@
 		0A814C171C949F3700FEEB36 /* MusicLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C161C949F3700FEEB36 /* MusicLoader.swift */; };
 		0A814C191C94C6A200FEEB36 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A814C181C94C6A200FEEB36 /* libSuperpoweredAudioIOS.a */; };
 		0A814C261C94C6FA00FEEB36 /* BPMDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C251C94C6FA00FEEB36 /* BPMDetector.mm */; };
+		0A814C301C94DCF400FEEB36 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A814C2F1C94DCF400FEEB36 /* Recorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0A814C241C94C6FA00FEEB36 /* BPMDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMDetector.h; sourceTree = "<group>"; };
 		0A814C251C94C6FA00FEEB36 /* BPMDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BPMDetector.mm; sourceTree = "<group>"; };
 		0A814C2A1C94C7F900FEEB36 /* BeTheBeat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeTheBeat-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A814C2F1C94DCF400FEEB36 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				0A814C141C949DD800FEEB36 /* ViewController.swift */,
 				0A814C161C949F3700FEEB36 /* MusicLoader.swift */,
+				0A814C2F1C94DCF400FEEB36 /* Recorder.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A814C301C94DCF400FEEB36 /* Recorder.swift in Sources */,
 				0A814C171C949F3700FEEB36 /* MusicLoader.swift in Sources */,
 				0A814C151C949DD800FEEB36 /* ViewController.swift in Sources */,
 				0A814BF41C949D5000FEEB36 /* AppDelegate.swift in Sources */,
