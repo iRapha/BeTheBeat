@@ -59,9 +59,9 @@ class ViewController: UIViewController {
             exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
                 self.songBPM = BPMDetector().getBPM(newURL)
                 print("Song BPM: \(self.songBPM!)")
-                self.songBPMLabel.text = String(self.songBPM)
+                self.songBPMLabel.text = String(self.songBPM!)
                 
-                //Start recording once we have our songBPM
+                // Start recording once we have our songBPM
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.recorder.startRecording()
                 })
