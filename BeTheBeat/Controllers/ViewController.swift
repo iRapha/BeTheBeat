@@ -13,8 +13,11 @@ import AVFoundation
 class ViewController: UIViewController {
     
     @IBOutlet weak var currentBPMLabel: UILabel!
-    
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var songNameLabel: UILabel!
+
     var musicPlayer: AVPlayer? = nil
+    var isPlaying: Bool = false;
     
     var songAsset: AVURLAsset? = nil {
         willSet(newValue) {
@@ -22,7 +25,8 @@ class ViewController: UIViewController {
             
             guard let newValue = newValue else { return }
             let player = AVPlayer(URL: newValue.URL)
-//            player.play()
+            player.play()
+            isPlaying = true
             self.musicPlayer = player
         }
         didSet {
@@ -62,6 +66,16 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func playPause() {
+        if (self.isPlaying) {
+            self.musicPlayer?.pause()
+            isPlaying = false
+        } else {
+            self.musicPlayer?.play()
+            isPlaying = true
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if songAsset == nil {
@@ -85,6 +99,8 @@ extension ViewController : MPMediaPickerControllerDelegate {
                 
                 let asset = AVURLAsset(URL: url)
                 self.songAsset = asset
+                self.songNameLabel.text = song.title
+                self.artistLabel.text = song.artist
         }
     }
 }
