@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BeTheBeat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FixTheBeat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,7 +31,7 @@
                                 <rect key="frame" x="263" y="562" width="75" height="30"/>
                                 <state key="normal" title="Play/Pause"/>
                                 <connections>
-                                    <action selector="playPause" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1j-FQ-WSR"/>
+                                    <action selector="playPause" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUE-mm-lXx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPA-z2-BXt">
@@ -80,11 +80,12 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="artistLabel" destination="NRS-5m-BqT" id="FOg-ta-BNF"/>
-                        <outlet property="coverArt" destination="eyH-tL-DNr" id="Qqx-nD-RAU"/>
-                        <outlet property="currentBPMLabel" destination="gEH-3c-7L2" id="R4T-us-ODU"/>
-                        <outlet property="songBPMLabel" destination="JA4-Fd-ULr" id="cPw-hw-FiN"/>
-                        <outlet property="songNameLabel" destination="dPA-z2-BXt" id="RKI-sR-KEU"/>
+                        <outlet property="artistLabel" destination="NRS-5m-BqT" id="BUW-gS-1Iz"/>
+                        <outlet property="coverArt" destination="eyH-tL-DNr" id="YZM-jS-Osb"/>
+                        <outlet property="currentBPMLabel" destination="gEH-3c-7L2" id="5fl-iD-N93"/>
+                        <outlet property="playPauseButton" destination="3oP-A7-PYi" id="ik7-JB-YlJ"/>
+                        <outlet property="songBPMLabel" destination="JA4-Fd-ULr" id="imB-jK-kch"/>
+                        <outlet property="songNameLabel" destination="dPA-z2-BXt" id="wqo-NP-NVq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
