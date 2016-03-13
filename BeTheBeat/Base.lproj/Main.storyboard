@@ -19,35 +19,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyH-tL-DNr">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="494"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="104.5 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEH-3c-7L2">
-                                <rect key="frame" x="439" y="523" width="83" height="21"/>
+                                <rect key="frame" x="439" y="567" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-A7-PYi">
-                                <rect key="frame" x="263" y="518" width="75" height="30"/>
+                                <rect key="frame" x="263" y="562" width="75" height="30"/>
                                 <state key="normal" title="Play/Pause"/>
                                 <connections>
                                     <action selector="playPause" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1j-FQ-WSR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPA-z2-BXt">
-                                <rect key="frame" x="256" y="458" width="89" height="21"/>
+                                <rect key="frame" x="256" y="502" width="89" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-5m-BqT">
-                                <rect key="frame" x="285" y="483" width="31" height="15"/>
+                                <rect key="frame" x="285" y="527" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="170 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-Fd-ULr">
-                                <rect key="frame" x="87" y="523" width="67" height="21"/>
+                                <rect key="frame" x="87" y="567" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eyH-tL-DNr" secondAttribute="trailing" id="3tr-Yk-XlG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3oP-A7-PYi" secondAttribute="bottom" constant="8" symbolic="YES" id="7zf-kr-RJe"/>
                             <constraint firstItem="dPA-z2-BXt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Y1-p7-Ejd"/>
                             <constraint firstItem="eyH-tL-DNr" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="JBm-NL-QR4"/>
                             <constraint firstItem="3oP-A7-PYi" firstAttribute="top" secondItem="NRS-5m-BqT" secondAttribute="bottom" constant="20" id="PhD-Oe-PRa"/>
@@ -73,6 +74,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="JBm-NL-QR4"/>
                                 <exclude reference="aEL-YT-NSn"/>
                             </mask>
                         </variation>
