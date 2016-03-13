@@ -74,6 +74,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="artistLabel" destination="NRS-5m-BqT" id="FOg-ta-BNF"/>
+                        <outlet property="currentBPMLabel" destination="gEH-3c-7L2" id="R4T-us-ODU"/>
+                        <outlet property="songNameLabel" destination="dPA-z2-BXt" id="RKI-sR-KEU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
