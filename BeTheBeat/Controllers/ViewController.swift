@@ -43,6 +43,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recorder.delegate = self
+        let device = UIDevice.currentDevice()
+        device.proximityMonitoringEnabled = true
+        if device.proximityMonitoringEnabled {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged", name: "UIDeviceProximityStateDidChangeNotification", object: device)
+        }
     }
     
     private func runSongBPMCalculations() {
