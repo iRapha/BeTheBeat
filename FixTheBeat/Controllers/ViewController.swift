@@ -46,8 +46,12 @@ class ViewController: UIViewController {
         let device = UIDevice.currentDevice()
         device.proximityMonitoringEnabled = true
         if device.proximityMonitoringEnabled {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged", name: "UIDeviceProximityStateDidChangeNotification", object: device)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "proximityChanged:", name: "UIDeviceProximityStateDidChangeNotification", object: device)
         }
+    }
+    
+    func proximityChanged() {
+        print("same tbh")
     }
     
     private func runSongBPMCalculations() {
