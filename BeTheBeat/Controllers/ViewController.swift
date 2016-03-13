@@ -59,8 +59,7 @@ class ViewController: UIViewController {
             
             exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
                 self.songBPM = BPMDetector().getBPM(newURL)
-                print("Song BPM: \(self.songBPM!)")
-                self.songBPMLabel.text = String(self.songBPM!)
+                self.songBPMLabel.text = "BPM: \(self.songBPM!)"
                 
                 // Start recording once we have our songBPM
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -71,12 +70,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playPause() {
-        if (self.isPlaying) {
-            self.musicPlayer?.pause()
+        if (isPlaying) {
+            musicPlayer?.pause()
             isPlaying = false
             playPauseButton.setTitle("Play", forState: .Normal)
         } else {
-            self.musicPlayer?.play()
+            musicPlayer?.play()
             isPlaying = true
             playPauseButton.setTitle("Pause", forState: .Normal)
         }
@@ -104,10 +103,10 @@ extension ViewController : MPMediaPickerControllerDelegate {
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
                 let asset = AVURLAsset(URL: url)
-                self.songAsset = asset
-                self.songNameLabel.text = song.title
-                self.artistLabel.text = song.artist
-                self.coverArt.image = song.artwork?.imageWithSize(self.coverArt.frame.size)
+                songAsset = asset
+                songNameLabel.text = song.title
+                artistLabel.text = song.artist
+                coverArt.image = song.artwork?.imageWithSize(coverArt.frame.size)
         }
     }
 }
@@ -116,7 +115,6 @@ extension ViewController : RecorderDelegate {
     func recorder(recorder: Recorder, didUpdateBPM bpm: Float) {
         guard let songBPM = songBPM else { return }
         adjustBeat(originalBeat: songBPM, newBeat: bpm)
-        self.currentBPMLabel.text = String(bpm)
     }
     
     private func adjustBeat(originalBeat originalBeat: Float, newBeat: Float) {
@@ -125,6 +123,7 @@ extension ViewController : RecorderDelegate {
             return
         }
         musicPlayer?.rate = (newBeat / originalBeat)
+        currentBPMLabel.text = "BPM: \(newBeat)"
     }
 }
 
